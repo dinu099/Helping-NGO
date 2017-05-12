@@ -1,0 +1,33 @@
+@media screen and (max-width: 1380px) {
+	.login{
+		width:40%;
+	}
+	.login1{
+		padding-top:20px;
+	}
+}
+@media screen and (max-width: 1080px) {
+	.login{
+		width:50%;
+	}
+	.login1{
+		padding-top:20px;
+	}
+}
+@media screen and (max-width: 768px) {
+	.login{
+		width:70%;
+	}
+	.login1{
+		padding-top:20px;
+	}
+}
+@media screen and (max-width: 480px) {
+	.login{
+		width:90%;
+		
+	}
+	.login1{
+		padding-top:20px;
+	}
+}
