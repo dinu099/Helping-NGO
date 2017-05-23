@@ -19,7 +19,7 @@
 					<header id="header" class="alt">
 						<h1><a href="home.php">Helping NGO</a></h1>
 						<nav id="nav">
-							<ul><li>Hi
+							<ul><li><a href="user.php">Hi
 									<?php
 										require_once "user_name.php";
 										$user=$name['name'];
@@ -29,7 +29,7 @@
 										else{
 											echo "Guest";
 										}
-									?>!
+									?>!</a>
 								</li>
 								<li class="special">
 									<a href="#menu" class="menuToggle"><span>Menu</span></a>
@@ -75,7 +75,7 @@
 											
 											<!---------------------------------------------------------------------->
 											
-											<li><a href="#">About Us</a></li>
+											<li><a href="team.php">About Us</a></li>
 											<li><a href="faq.php">FAQ</a></li>
 										</ul>
 									</div>
@@ -89,7 +89,8 @@
 						<div class="inner">
 							<h2>Helping NGO</h2>
 							<br><br>
-							<font style="font-size:30px;">दाता लघुः अपि सेव्यः भवति, न कृपणः महान् अपि समृद्ध्या  ।</font>
+							<div>
+							<font style="font-size:30px;">दाता लघुः अपि सेव्यः भवति, न कृपणः महान् अपि समृद्ध्या  ।</font></div>
 						</div>
 						<a href="#one" class="more scrolly">Learn More</a>
 					</section>
@@ -130,10 +131,10 @@
 				<!-- Footer -->
 					<footer id="footer">
 						<ul class="icons">
-							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+							<li><a href="https://twitter.com/helpingngo3" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="https://www.facebook.com/helpingngo3/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+							<li><a href="https://www.instagram.com/helpingngo3/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="mailto:helpingngo3@gmail.com" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
 						</ul>
 						<ul class="copyright">
 							<li>&copy; <a href="#">Helping NGO</a></li><li>2017</li>

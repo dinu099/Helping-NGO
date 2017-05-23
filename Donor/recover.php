@@ -33,8 +33,8 @@ function recoverPassword(){
 						//echo $to ."</br>";
 						$flag=1;
 						if(mail($to, $subject, $message,$header)){
-							header( "refresh:5; url=login.php" ); 
-							echo "Your Password has been sent to your email id";
+							header( "refresh:0; url=login.php" ); 
+							echo "<script>alert('Your Password has been sent to your email id')</script>";
 						}
 						else{
 							echo "Failed to Recover your password, try again";
@@ -43,10 +43,10 @@ function recoverPassword(){
 					}
 				}
 				if($flag==0){
-					header ("Location: forgot.php");
+					header( "refresh:0; url=forgot.php" ); 
+					echo "<script>alert('Wrong Password!!')</script>";
 				}
 			}
-	
 			else{
 				header ("Location: forgot.php");
 			}

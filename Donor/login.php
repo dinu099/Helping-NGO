@@ -40,8 +40,8 @@ else{
 													<li><a href=\"home.php\">Home</a></li>
 													<li><a href=\"login.php\">Sign In</a></li>
 													<li><a href=\"SignUp.php\">Sign Up</a></li>
-													<li><a href=\"#\">About Us</a></li>
-													<li><a href=\"#\">FAQ</a></li>
+													<li><a href=\"team.php\">About Us</a></li>
+													<li><a href=\"faq.php\">FAQ</a></li>
 												</ul>
 											</div>
 										</li>
@@ -55,11 +55,12 @@ else{
 									
 									<h2 style=\"font-size:25px; padding-top:-100px;\">Login</h2>
 									<center>
-									<div class=\"login\">
+									<div class=\"login\" style=\"width:600px;\">
 										<form action=\"loginManager.php\" method=\"POST\">
 										<div class=\"login1\">
 											<input type=\"email\" name=\"user_mail\" placeholder=\"Email address\" required>
 										</div>
+										<br>
 										<div class=\"login1\">
 											<input type=\"password\" name=\"user_password\" placeholder=\"Password\" required maxlength=\"12\">
 										</div>
@@ -72,17 +73,17 @@ else{
 									</div>
 									</center>
 								</header>
-								
+							</article>
 						<!-- Footer -->
 							<footer id=\"footer\">
 								<ul class=\"icons\">
-									<li><a href=\"#\" class=\"icon fa-twitter\"><span class=\"label\">Twitter</span></a></li>
-									<li><a href=\"#\" class=\"icon fa-facebook\"><span class=\"label\">Facebook</span></a></li>
-									<li><a href=\"#\" class=\"icon fa-instagram\"><span class=\"label\">Instagram</span></a></li>
-									<li><a href=\"#\" class=\"icon fa-envelope-o\"><span class=\"label\">Email</span></a></li>
+									<li><a href=\"https://twitter.com/helpingngo3\" class=\"icon fa-twitter\"><span class=\"label\">Twitter</span></a></li>
+									<li><a href=\"https://www.facebook.com/helpingngo3/\" class=\"icon fa-facebook\"><span class=\"label\">Facebook</span></a></li>
+									<li><a href=\"https://www.instagram.com/helpingngo3/\" class=\"icon fa-instagram\"><span class=\"label\">Instagram</span></a></li>
+									<li><a href=\"mailto:helpingngo3@gmail.com\" class=\"icon fa-envelope-o\"><span class=\"label\">Email</span></a></li>
 								</ul>
 								<ul class=\"copyright\">
-									<li>&copy; <a href=\"#\">Helping NGO</a></li><li>2017</li>
+									<li>&copy; <a href=\"home.php\">Helping NGO</a></li><li>2017</li>
 								</ul>
 							</footer>
 
@@ -101,7 +102,7 @@ else{
 		</html>";
 		}
 		else{
-			header("refresh:0; url=pledge.php");
+			header("refresh:0; url=home.php");
 			echo "<script>alert('Already Logged in.');</script>";
 		}
 }

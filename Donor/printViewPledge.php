@@ -14,7 +14,7 @@
 			else{
 				session_start();
 				$user=$_SESSION['user'];
-				$result=mysql_query("SELECT fullname,emailid,mobile,address,pincode,item,quantity FROM pledgeinfo where donor_id='$user';");
+				$result=mysql_query("SELECT fullname,emailid,mobile,address,pincode,item,quantity FROM pledgeinfo where emailid='$user';");
 			}
 	}
 	 

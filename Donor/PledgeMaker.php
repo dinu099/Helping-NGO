@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 $mysql_host="localhost";
 $mysql_user='root';
 $mysql_password='';
@@ -20,6 +21,7 @@ else{
 }
 class PledgeMaker{
 function makePledge(){
+		$arr=array();
 		session_start();
 		$user=$_SESSION['user'];
 		$nameError=array();
@@ -28,10 +30,16 @@ function makePledge(){
 		$user_contact=$_POST["contact"];
 		$address=$_POST["address"];
 		$zip=$_POST["pin"];
-		$items=$_POST["item"];
 		$quantity=$_POST["quantity"];
-		//$email=$_POST["user_mail"];
-		
+		$latitude=$_POST["latitude"];
+		$longitude=$_POST["longitude"];
+		if(!empty($_POST['drop'])) {
+						foreach($_POST['drop'] as $check) {
+							$items.=$check.", ";
+						}
+					}
+		if(isset($latitude) and !empty($latitude)){
+			
 		if (strlen($user_contact) < 10) {
 			$nameError[] = "Contact number  must have 10 characters.";
 		} 
@@ -39,7 +47,7 @@ function makePledge(){
 			$nameError[] = "Please enter valid email address.";
 		} 
 		if(count($nameError)===0){
-			$query="INSERT INTO `pledgeinfo` ( `fullname`, `emailid`, `mobile`, `address`, `pincode`, `item`, `quantity`,`donor_id`) VALUES ('$name', '$mail', '$user_contact', '$address', '$zip', '$items', '$quantity','$user')";
+			$query="INSERT INTO `pledgeinfo` ( `fullname`, `emailid`, `mobile`,`latitude`,`longitude`, `address`, `pincode`, `item`, `quantity`) VALUES ('$name', '$mail', '$user_contact', '$latitude', '$longitude', '$address', '$zip', '$items', '$quantity')";
 			$insertion=mysql_query($query);
 			header( "refresh:0; url=home.php" );
 			echo "<script>alert('Thanks For Donating!!!');</script>";
@@ -52,6 +60,11 @@ function makePledge(){
 				echo "Please Enter the valid details";
 			}
 		
+		}
+		}
+		else{
+			header( "refresh:0; url=pledge.php" );
+			echo "<script>alert('Use computer to make donation');</script>";
 		}
 	}
 function viewPledge(){
@@ -73,11 +86,7 @@ function viewPledge(){
 		echo "No Records found";
 	}
 	
+}	
 }
-	
-}
-
-
-
 
 ?>
