@@ -1,12 +1,23 @@
 <?php
-session_start();
-$user_NGO=$_SESSION['NGO'];
-if(isset($user_NGO) and !empty($user_NGO)){
-	class Donation{
-	function getData(){
-		
-		echo"
-			<html lang=\"en\">
+error_reporting(0);
+$mysql_host="localhost";
+$mysql_user='root';
+$mysql_password='';
+$user_NGO="";
+
+if(!@mysql_connect($mysql_host,$mysql_user,$mysql_password))
+	{
+		echo("cannot connect to database");
+	}
+else{
+	if(@mysql_select_db("NGO")){
+		session_start();
+		$user_NGO=$_SESSION['NGO'];
+		if(!isset($user_NGO) and empty($user_NGO)){
+			
+		echo
+		"
+		<html lang=\"en\">
 
 			<head>
 
@@ -42,22 +53,7 @@ if(isset($user_NGO) and !empty($user_NGO)){
 							</button>
 							<a class=\"navbar-brand page-scroll\" href=\"homeNGO.php\">Helping NGO</a>
 						</div>
-
-						<!-- Collect the nav links, forms, and other content for toggling -->
-						<div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">
-							<ul class=\"nav navbar-nav navbar-right\">
-								<li>
-									<a class=\"page-scroll\" href=\"homeNGO.php\">Home</a>
-								</li>
-								<li>
-									<a class=\"page-scroll\" href=\"#contact\">Contact Us</a>
-								</li>
-								<li>
-									<a class=\"page-scroll\" href=\"logout.php\">Logout</a>
-								</li>
-							</ul>
-						</div>
-						<!-- /.navbar-collapse -->
+					
 					</div>
 					<!-- /.container-fluid -->
 				</nav>
@@ -65,52 +61,51 @@ if(isset($user_NGO) and !empty($user_NGO)){
 				<header>
 					<div class=\"header-content\">
 						<div class=\"header-content-inner\"><br><br>
-							<center><b><font style=\"font-size:30px;\">Area List</font></b><br><br>
-							<div class=\"col-sm-8 col-sm-offset-2\">
-								<form action=\"Filter.php\" method=\"POST\">
-									<table class=\"table table-bordered table-fixed\" style=\"color:white; font-size:20px;\">
-										<thead>
-											<tr>
-											  <th class=\"col-sm-3\">Select</th>
-											  <th class=\"col-sm-6\">Pincode</th>
-											  <th class=\"col-sm-3\">No. of Donors</th>
-											</tr>
-										</thead>
-										<tbody>";
-										include_once("viewPledgeDonationTable.php");
-										echo"</tbody>
-									</table>
-									<br><br>
+									<h2 style=\"font-size:35px;\">Login</h2>
 									<center>
-										<input class=\"btn btn-default btn-xl\" type=\"submit\" name=\"view\" value=\"View Pledge\" style=\"color:red; width:250px;\"\">
+									<div>
+										<form action=\"loginManagerNGO.php\" method=\"POST\">
+										
+										
+											<div class=\"input-group input-group-lg col-sm-6 col-xs-9\">
+											  <span class=\"input-group-addon\"><i class=\"glyphicon glyphicon-user\"></i></span>
+											  <input type=\"text\" class=\"form-control\" name=\"user_id\" placeholder=\"Username\" required>
+											</div><br>
+											<div class=\"input-group input-group-lg col-sm-6 col-xs-9\">
+											  <span class=\"input-group-addon\"><i class=\"glyphicon glyphicon-lock\"></i></span>
+											  <input id=\"password\" type=\"password\" class=\"form-control\" name=\"user_password\" placeholder=\"Password\" maxlength=\"12\" required>
+											</div>
+											<br>
+											<input class=\"btn btn-default btn-xl\" type=\"submit\" name=\"user_login\" value=\"Submit\" style=\"color:black; width:200px;\"\">
+											<br><br>
+											<a href=\"forgot.php\" style=\"color:black; font-size:20px;\">Forgot Password?</a>
+										
+										</form> 
+									</div>
 									</center>
-								</form>
-								</div>
-							</center>
 						</div>
-					</div>
 				</header>
 				
 				
 				<section id=\"contact\">
-						<div class=\"container\">
-							<div class=\"row\">
-								<div class=\"col-lg-8 col-lg-offset-2 text-center\">
-									<h2 class=\"section-heading\">Get In Touch with us.</h2>
-									<hr class=\"primary\">
-									<p>Give us a call or send us an email and we will get back to you as soon as possible!</p>
-								</div>
-								<div class=\"col-lg-4 col-lg-offset-2 text-center\">
-									<i class=\"fa fa-phone fa-3x sr-contact\"></i>
-									<a href=\"tel:9163040718\"><p>9163040718</p></a>
-								</div>
-								<div class=\"col-lg-4 text-center\">
-									<i class=\"fa fa-envelope-o fa-3x sr-contact\"></i>
-									<p><a href=\"mailto:piyush123.ansu@gmail.com\">piyush123.ansu@gmail.com</a></p>
-								</div>
+					<div class=\"container\">
+						<div class=\"row\">
+							<div class=\"col-lg-8 col-lg-offset-2 text-center\">
+								<h2 class=\"section-heading\">Let's Get In Touch!</h2>
+								<hr class=\"primary\">
+								<p>Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!</p>
+							</div>
+							<div class=\"col-lg-4 col-lg-offset-2 text-center\">
+								<i class=\"fa fa-phone fa-3x sr-contact\"></i>
+								<p>123-456-6789</p>
+							</div>
+							<div class=\"col-lg-4 text-center\">
+								<i class=\"fa fa-envelope-o fa-3x sr-contact\"></i>
+								<p><a href=\"mailto:your-email@your-domain.com\">feedback@startbootstrap.com</a></p>
 							</div>
 						</div>
-					</section>
+					</div>
+				</section>
 
 				<!-- jQuery -->
 				<script src=\"assets/vendor/jquery/jquery.min.js\"></script>
@@ -129,11 +124,17 @@ if(isset($user_NGO) and !empty($user_NGO)){
 			</body>
 
 			</html>";
-	}
-	}
+								
+		}
+		else{
+			echo $user_NGO;
+			//header("refresh:0; url=homeNGO.php");
+			//echo "<script>alert('Already Logged in.');</script>";
+		}
 }
-else{
-	header("refresh:0; url=loginNGO.php");
-	echo "<script>alert('Please Login to continue.');</script>";
-}
+	else{
+		echo('cannot connect to database');
+		
+	}
+}	
 ?>

@@ -14,7 +14,7 @@
 					echo("No database with this name");
 				}
 				else{
-					$result=mysql_query("SELECT pincode,count(*) as Donors from pledgeinfo where flag=0 group by pincode");
+					$result=mysql_query("SELECT pincode,count(*) as Donors from pledgeinfo group by pincode");
 				}
 		}
 			  while( $row = mysql_fetch_assoc( $result ) ){

@@ -1,6 +1,15 @@
 <?php
+error_reporting(0);
 $call=new Volunteer;
-$call->listVolunteer();
+session_start();
+$user_NGO=$_SESSION['NGO'];
+if(isset($user_NGO) and !empty($user_NGO)){
+	$call->listVolunteer();
+}
+else{
+	header("refresh:0; url=loginNGO.php");
+	echo "<script>alert('Please Login to continue.');</script>";
+}
 class Volunteer{
 function listVolunteer(){
 	echo"
@@ -30,7 +39,7 @@ function listVolunteer(){
 
 		</head>
 
-		<body id=\"page-top\">
+		<body id=\"page-top\" onload=' location.href=\"#list\" '>
 
 			<nav id=\"mainNav\" class=\"navbar navbar-default navbar-fixed-top\">
 				<div class=\"container-fluid\">
@@ -52,7 +61,7 @@ function listVolunteer(){
 								<a class=\"page-scroll\" href=\"#contact\">Contact Us</a>
 							</li>
 							<li>
-								<a class=\"page-scroll\" href=\"#about\">Logout</a>
+								<a class=\"page-scroll\" href=\"logout.php\">Logout</a>
 							</li>
 						</ul>
 					</div>
@@ -100,6 +109,25 @@ function listVolunteer(){
 					</div>
 				</div>
 			</section>
+			<section id=\"contact\" style=\"background:#d9d9d9;\">
+						<div class=\"container\">
+							<div class=\"row\">
+								<div class=\"col-lg-8 col-lg-offset-2 text-center\">
+									<h2 class=\"section-heading\">Get In Touch with us.</h2>
+									<hr class=\"primary\">
+									<p>Give us a call or send us an email and we will get back to you as soon as possible!</p>
+								</div>
+								<div class=\"col-lg-4 col-lg-offset-2 text-center\">
+									<i class=\"fa fa-phone fa-3x sr-contact\"></i>
+									<a href=\"tel:9163040718\"><p>9163040718</p></a>
+								</div>
+								<div class=\"col-lg-4 text-center\">
+									<i class=\"fa fa-envelope-o fa-3x sr-contact\"></i>
+									<p><a href=\"mailto:piyush123.ansu@gmail.com\">piyush123.ansu@gmail.com</a></p>
+								</div>
+							</div>
+						</div>
+					</section>
 
 			<!-- jQuery -->
 			<script src=\"assets/vendor/jquery/jquery.min.js\"></script>
